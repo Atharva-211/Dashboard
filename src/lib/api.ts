@@ -3,7 +3,7 @@ import { User, UserFormData, ApiResponse, UsersResponse, ApiError } from '../typ
 
 // Configure axios instance
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://us-central1-your-project-id.cloudfunctions.net',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

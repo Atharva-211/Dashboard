@@ -4,8 +4,11 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-admin.initializeApp();
-const db = admin.firestore();
+admin.initializeApp(); // ✅ initialize Firebase only once
+const db = admin.firestore(); // ✅ get the Firestore instance
+
+const FieldValue = admin.firestore.FieldValue; // ✅ properly extract FieldValue
+
 
 // Helper function for user validation
 const validateUser = (userData) => {
@@ -70,11 +73,14 @@ app.post("/users", async (req, res) => {
       return res.status(400).json({ success: false, error: "Email already exists" });
     }
 
+    const { FieldValue } = admin.firestore;
+
     const newUser = {
       ...userData,
-      createdAt: admin.firestore.FieldValue.serverTimestamp(),
-      updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+      createdAt: FieldValue.serverTimestamp(),
+      updatedAt: FieldValue.serverTimestamp(),
     };
+
 
     const docRef = await db.collection("users").add(newUser);
     const doc = await docRef.get();
@@ -190,5 +196,13 @@ app.get("/health", (req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+// if (process.env.NODE_ENV !== 'production') {
+//   const PORT = process.env.PORT || 5001;
+//   app.listen(PORT, () => {
+//     console.log(`🚀 Local API server running on http://localhost:${PORT}/`);
+//   });
+// }
+
 
 exports.api = functions.https.onRequest(app);
