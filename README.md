@@ -1,6 +1,9 @@
 # User Dashboard - Full Stack Application
 
-A modern, responsive user management dashboard built with Next.js, TypeScript, Tailwind CSS, and Google Cloud Functions with Firestore.
+A modern, responsive user management dashboard built with Next.js, TypeScript, Tailwind CSS, and a Node.js + Express backend using MongoDB.
+
+📄 Includes setup instructions, CRUD API documentation, and a video demo link.
+
 
 ## 🚀 Features
 
@@ -10,7 +13,7 @@ A modern, responsive user management dashboard built with Next.js, TypeScript, T
 - **Form Validation**: Client-side validation using Zod and React Hook Form
 - **Real-time Updates**: Instant UI updates after operations
 - **Docker Support**: Containerized for easy deployment
-- **Cloud Backend**: Google Cloud Functions with Firestore database
+- **Backend API**: Node.js Express API connected to MongoDB
 
 ## 🛠️ Tech Stack
 
@@ -23,10 +26,11 @@ A modern, responsive user management dashboard built with Next.js, TypeScript, T
 - **Axios** - HTTP client for API calls
 
 ### Backend
-- **Google Cloud Functions** - Serverless backend API
-- **Firestore** - NoSQL cloud database
 - **Express.js** - Web framework for API routes
+- **MongoDB** - NoSQL document database
+- **Mongoose** - ODM for MongoDB and Node.js
 - **CORS** - Cross-origin resource sharing
+
 
 ### DevOps
 - **Docker** - Containerization
@@ -70,7 +74,7 @@ Before running this application, make sure you have:
 2. **Set up environment variables**
    Create a `.env.local` file in the root directory:
    ```env
-   NEXT_PUBLIC_API_URL=https://us-central1-dashboard-57a3f.cloudfunctions.net/api
+   NEXT_PUBLIC_API_URL=http://localhost:5001/api
    ```
 
 3. **Run the development server**
@@ -83,34 +87,26 @@ Before running this application, make sure you have:
 
 ## 🔧 Backend Setup
 
-### Deploy Cloud Functions
+The backend is a Node.js + Express server connected to MongoDB.
 
-1. **Navigate to functions directory**
-   ```bash
-   cd functions
-   ```
+1. Make sure MongoDB is running locally or provide a remote MongoDB URI.
+2. Set your `.env` file:
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```env
+MONGODB_URI=mongodb://localhost:27017/your-db-name
+```
 
-3. **Deploy to Firebase**
-   ```bash
-   firebase deploy --only functions
-   ```
-
-### Firestore Setup
-
-1. **Enable Firestore** in your Google Cloud Console
-2. **Set up security rules** (firestore.rules)
-3. **Create indexes** if needed (firestore.indexes.json)
+## Start the backend server (Docker or locally):
+```
+npm run build
+npm run start
+```
 
 ## 📚 API Documentation
 
 ### Base URL
 ```
-https://us-central1-dashboard-57a3f.cloudfunctions.net/api
+http://localhost:5001/api
 ```
 
 ### Endpoints
