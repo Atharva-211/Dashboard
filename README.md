@@ -337,4 +337,5 @@ If you encounter any issues:
 
 ## 🎥 Demo
 
-For a video demonstration of the CRUD operations and Docker deployment, please refer to the project documentation or contact the development team.
+For a video demonstration of the CRUD operations and Docker deployment, please refer to the project documentation:
+https://youtu.be/uwQM2W8oQQM
