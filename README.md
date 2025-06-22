@@ -248,20 +248,6 @@ docker-compose logs -f frontend
 
 ## 🔍 Development
 
-### Project Structure
-```
-Dashboard-main/
-├── src/
-│   ├── app/                 # Next.js App Router
-│   ├── components/          # React components
-│   ├── lib/                 # Utility functions
-│   └── types/               # TypeScript type definitions
-├── functions/               # Google Cloud Functions
-├── Dockerfile              # Docker configuration
-├── docker-compose.yml      # Docker Compose configuration
-└── firebase.json           # Firebase configuration
-```
-
 ### Available Scripts
 
 ```bash
